@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://example.org/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>poking protocols</title>
+    <link>http://abllr.github.io/</link>
+    <description>Recent content on poking protocols</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Jul 2018 17:41:36 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 06 Jul 2018 17:59:08 +0100</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://abllr.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Transactions as Puzzles : How to think about Bitcoin and Ethereum ledgers</title>
+      <link>http://abllr.github.io/posts/transactions-or-puzzles/</link>
+      <pubDate>Fri, 06 Jul 2018 17:59:08 +0100</pubDate>
+      
+      <guid>http://abllr.github.io/posts/transactions-or-puzzles/</guid>
+      <description>Bitcoin is digital P2P cash , the important part here is cash, unlike other models of transfer of value Bitcoin transactions are difficult to think about and model (do you actually know how it works ?) . ethereum ledger is similar to a what a bank database may look like . It has a set of accounts and the ledger stores states at each block (bitcoin stores the state transition), each new block represents essentially the result of a state transformation .</description>
+    </item>
+    
+    <item>
       <title>About</title>
-      <link>http://example.org/posts/about/</link>
+      <link>http://abllr.github.io/posts/about/</link>
       <pubDate>Fri, 06 Jul 2018 17:41:36 +0100</pubDate>
       
-      <guid>http://example.org/posts/about/</guid>
+      <guid>http://abllr.github.io/posts/about/</guid>
       <description>22 , Camel herder , I like protocols and cryptography , I write code but rarely publish , sometimes I act angrily on the internet .</description>
     </item>
     
