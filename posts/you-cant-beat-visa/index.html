@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.40.1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/custom.css">
+<title>You Cant Beat Visa</title>
+</head>
+<body>
+
+<div class="container">
+  <header role="banner">
+  <h1 id="title">You Cant Beat Visa</h1>
+  </header>
+
+  <main role="main">
+  <div>
+        <article id="content">
+           
+
+<p>In a white paper or a marketing brochure somewhere there&rsquo;s a common sentence &ldquo;Visa processes 7000 TPS&rdquo; the actual number is more like 1600 TPS
+and Visa says they can handle <a href="https://mybroadband.co.za/news/security/190348-visanet-handling-100000-transactions-per-minute.html">more</a></p>
+
+<p>The sell pitch is usually <strong>scalable</strong> <strong>more transactions per seconds</strong> , this blog post is going to deconstruct this and convince you that ,
+if you want <em>decentralized</em> you can&rsquo;t do <em>visa type of transactions</em> .</p>
+
+<h4 id="basics-first">Basics First</h4>
+
+<ul>
+<li>Things your favorite developer don&rsquo;t probably know :</li>
+</ul>
+
+<p>In the land of distributed systems , a smart fellow devised 8 fallacies of distributed systems <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">ref</a></p>
+
+<ul>
+<li>The network is reliable</li>
+<li>Latency is zero</li>
+<li>Bandwidth is infinite</li>
+<li>The network is secure</li>
+<li>Topology doesn&rsquo;t change</li>
+<li>There is one administrator</li>
+<li>Transport cost is zero</li>
+<li>The network is homogeneous</li>
+</ul>
+
+<p>Since most altcoin devs learned programming by forking bitcoin they will <em>fall</em> in one of these , we will start by discussing a few ideas
+before applying the 8 fallacies to the current wave of crypto(currency) projects .</p>
+
+<h4 id="more-talk">More Talk</h4>
+
+<p>Bitcoin uses 10 minute blocks , a study made by some more smart fellows <a href="http://www.tik.ee.ethz.ch/file/49318d3f56c1d525aabf7fda78b23fc0/P2P2013_041.pdf">paper</a>
+once a miner (in Bitcoin) mines a block it takes 6.5 seconds to reach half the nodes , and 40 seconds to reach the majority (95.6 seconds) the mean delay
+is 12.6 seconds (average time for a mined block to reach other nodes) . Lower blocktime introduces stale blocks , where a miner Y will still be mining block B1
+while a miner Z has mined block B2 on top of B1 , simply Y didn&rsquo;t yet receive B1 to understand it has to move forward .</p>
+
+<p>Lower blocktime brings faster transactions as each transaction has to be included in a block, having a blocktime of 10 seconds means it will take 10+-2 seconds for
+a transaction to be included in a mined block , this is a neat trick to use if the second fallacy didn&rsquo;t exist and everyone had similar internet speed and lived on
+one single point on EART .
+If two miners with similar hash power exist in a network ,the winner will always be the closest to the majority of nodes in simpler terms if miner A is in France , miner B in Australia and the majority is in Europe
+A has more chances to win than B thus your network is more centralized than first thought . A Network is as strong as the it&rsquo;s hashpower and how distributed it is .</p>
+
+<p>The usual consensus that we find most are Proof Of Work and Proof Of Stake ,both are unfair since anyone with money can assure majority by either buying more mining hardware
+or more stake . EOS uses Delegated Proof Of Stake with <strong>centralized</strong> block producers, <strong>IOTA</strong> with it&rsquo;s <em>tangle</em> is broken <a href="http://blog.lekkertech.net/blog/2018/03/07/iota-signatures/">cryptographically</a>
+and <a href="https://twitter.com/SarahJamieLewis/status/1015396420138889216">literally</a>
+, worst than EOS they have 1 central server thay they say will go down soon , IOTA doesn&rsquo;t actually <a href="https://new.shitcoin.com/iota-cannot-be-used-for-iot-loss-of-funds-may-occur/">work</a> .</p>
+
+<p>P.S : <strong>If you&rsquo;re part of IOTA cult and want to send threats or whatever you know my twitter if you&rsquo;re nice I&rsquo;ll pay you a ticket and come see me .</strong></p>
+
+<blockquote>
+<p>To summarize this part you can do one thing good , or everthing bad .</p>
+</blockquote>
+
+<h4 id="dag-first-to-avoid-angry-people">DAG first to avoid angry people</h4>
+
+<p>It&rsquo;s mathematically proven that every time you say <strong>TPS</strong> a random pokemon appear to sell you the <strong>DAG</strong> and more precisely <a href="https://nano.org/en"><strong>NANO</strong></a> .
+This is a screenshot from their website .
+<img src="https://i.imgur.com/2QxLSp0.png" alt="nano stats" /></p>
+
+        </article>
+  </div>
+<aside id="meta">
+    <div>
+    <section>
+      <span class="entry-meta"><time itemprop="datePublished" datetime="2018-07-10">July 10, 2018 | 568 Words</time></span>
+    </section>
+    
+    
+    </div>
+    <div>
+        
+          <a class="previous" href="http://example.org/posts/transactions-or-puzzles/"> Transactions as Puzzles : How to think about Bitcoin and Ethereum ledgers</a> |
+        
+        
+          <a class="next" href="http://example.org/posts/cryptography-primer-zero/"> Cryptography Primer Zero</a>
+        
+    </div>
+
+</aside>
+</main>
+
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			<a href="/">Home</a> / <a href="mailto:test@test.com" target="_blank">Email</a> / <a href="https://salcangeloso.com">Site</a>
+		</div>
+		<div class="copyright">Copyright &copy; 2018</div>
+	</footer>
+
+  </div>
+
+</body>
+</html>

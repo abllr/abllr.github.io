@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.40.1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/custom.css">
+<title>Transactions as Puzzles : How to think about Bitcoin and Ethereum ledgers</title>
+</head>
+<body>
+
+<div class="container">
+  <header role="banner">
+  <h1 id="title">Transactions as Puzzles : How to think about Bitcoin and Ethereum ledgers</h1>
+  </header>
+
+  <main role="main">
+  <div>
+        <article id="content">
+           
+
+<p>Bitcoin is digital P2P cash , the important part here is <strong>cash</strong>, unlike other models of transfer of value
+Bitcoin transactions are difficult to think about and model (<strong>do you actually know how it works ?</strong>) .
+<a href="https://ethereum.org">ethereum</a> ledger is similar to a what a bank database may look like . It has a set of accounts and the ledger
+stores <strong>states</strong> at each block (bitcoin stores the <strong>state transition</strong>), each new block represents essentially the result of a <em>state transformation</em> .
+In this blog post I&rsquo;d like to explain in details the difference between the two since,because many i&rsquo;ve seen don&rsquo;t grasp the difference
+and the mental model used to represent what a real life <em>transaction</em> is like .</p>
+
+<p><strong>P.S</strong> : This was written mainly to give developers and normal people a mental model on how to tinker with transactions,if you are a <strong>Blockchain Expert</strong>  you don&rsquo;t need this .</p>
+
+<blockquote>
+<p>UTXO vs Accounts is another way of framing this subject .</p>
+</blockquote>
+
+<h3 id="what-is-money">What is money ?</h3>
+
+<blockquote>
+<p>I can&rsquo;t answer in question , I doubt anyone can give a precise definition of money because it&rsquo;s more of a representation than an actual object .</p>
+</blockquote>
+
+<p>In <a href="https://www.amazon.com/Bitcoin-Standard-Decentralized-Alternative-Central/dp/1119473861">The Bitcoin Standard</a> book money is defined as :</p>
+
+<blockquote>
+<p>A good that assumes the role of a widely accepted medium of exchange is called money , <em>Carl Menger&rsquo;s Salability</em> adds to the definition
+ the ease which a good can be sold on the market whenever its holder desires with the least loss in its price or <em>value</em> .</p>
+</blockquote>
+
+<p>Let&rsquo;s think about a real life transaction , you wake up in the morning and find yourself without coffee being a coffee maniac you go to the closest store
+to buy some of those fancy 15$ Arabica Grains that were cultivated in Puerto Rico . At the counter , you say <em>hi</em> to the cashier with a grimmy face you want
+him to know that you didn&rsquo;t have that morning coffee but you&rsquo;re just an A actually,you take out your wallet you have two choices :</p>
+
+<ul>
+<li>Pay him with a 20$ Bill</li>
+<li>Pay him with your Credit Card</li>
+</ul>
+
+<blockquote>
+<p>The first choice is similar to Bitcoin , the second similar to Ethereum .</p>
+</blockquote>
+
+<ul>
+<li>If you give him a 20$  Bill what happens is that 15$ goes to the cashier&rsquo;s wallet , and 5$ goes back to your wallet  this is a <strong>state transition</strong></li>
+<li>If you give him your credit card he will swipe , and your bank account balance will now be 15$ less this is a <strong>state</strong></li>
+</ul>
+
+<h3 id="bitcoin-transactions">Bitcoin Transactions</h3>
+
+<p>Bitcoin Transactions are like paying someone with cash bills , and since they do not have a central mint , the blockchain stores those transactions .
+The transaction to be accepted in a decentralized system (that is without a central issuer) they need to provide certain proofs :</p>
+
+<ul>
+<li>Where did the bill come from</li>
+<li>Where is it going</li>
+</ul>
+
+<p>The first is what we define in Bitcoin as <strong>input</strong> the second is what we define as <strong>output</strong> , but since we can&rsquo;t just refeer to people by names in the blockchain,
+there&rsquo;s what we call a SCRIPT that regulates this transition , in other words imaging instead of giving the cashier the money you put the money in a crowded street
+and tell people <strong>ONLY ALLOW THE PERSON WHO GIVES THIS SECRET</strong> to take the money , the secret here is the hash of the public key .</p>
+
+<blockquote>
+<p>Bitcoin transactions are similar to cash in their split behavior and similar to puzzles in their spending conditions .</p>
+</blockquote>
+
+<h3 id="ethereum-transactions">Ethereum Transactions</h3>
+
+<p>Ethereum blockchain as we said earlier stores <strong>states</strong> that is a series of accounts (0x&hellip;.) and balances and a nonce . The nonce is a counter
+of the transactions made by the account this is a double-spending protection measure .</p>
+
+<p>Each transaction , is similar to a credit card swipe , it checks whether you have the required balance and then <strong>&ldquo;transfers the funds&rdquo;</strong> and
+substract them from your initial balance .</p>
+
+<p><strong>Smarty Pants Thinking</strong></p>
+
+<p>Let&rsquo;s try to give a smart explanation of what we just said :</p>
+
+<ul>
+<li>Ethereum stores a series of states : S,S&rsquo;,S&rdquo; &hellip;</li>
+<li>Bitcoin stores a series of state transitions : T,T&rsquo;,T&rdquo; &hellip;</li>
+</ul>
+
+<p>This was purposefuly small to just give you an idea about how to think about both blockchains .</p>
+
+        </article>
+  </div>
+<aside id="meta">
+    <div>
+    <section>
+      <span class="entry-meta"><time itemprop="datePublished" datetime="2018-07-06">July 06, 2018 | 714 Words</time></span>
+    </section>
+    
+    
+    </div>
+    <div>
+        
+          <a class="previous" href="http://abllr.github.io/posts/about/"> About</a> |
+        
+        
+    </div>
+
+</aside>
+</main>
+
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			<a href="/">Home</a> / <a href="mailto:test@test.com" target="_blank">Email</a> / <a href="https://salcangeloso.com">Site</a>
+		</div>
+		<div class="copyright">Copyright &copy; 2018</div>
+	</footer>
+
+  </div>
+
+</body>
+</html>
