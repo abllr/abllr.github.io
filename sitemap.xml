@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://abllr.github.io/posts/cryptography-primer-zero/</loc>
+    <lastmod>2018-07-12T16:37:34+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://abllr.github.io/posts/you-cant-beat-visa/</loc>
+    <lastmod>2018-07-10T23:17:14+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://abllr.github.io/posts/transactions-or-puzzles/</loc>
     <lastmod>2018-07-06T17:59:08+01:00</lastmod>
   </url>
@@ -19,7 +29,7 @@
   
   <url>
     <loc>http://abllr.github.io/posts/</loc>
-    <lastmod>2018-07-06T17:59:08+01:00</lastmod>
+    <lastmod>2018-07-12T16:37:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -30,7 +40,7 @@
   
   <url>
     <loc>http://abllr.github.io/</loc>
-    <lastmod>2018-07-06T17:59:08+01:00</lastmod>
+    <lastmod>2018-07-12T16:37:34+01:00</lastmod>
     <priority>0</priority>
   </url>
   

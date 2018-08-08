@@ -6,10 +6,30 @@
     <description>Recent content in Posts on poking protocols</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Jul 2018 17:59:08 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jul 2018 16:37:34 +0100</lastBuildDate>
     
 	<atom:link href="http://abllr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cryptography Primer Zero</title>
+      <link>http://abllr.github.io/posts/cryptography-primer-zero/</link>
+      <pubDate>Thu, 12 Jul 2018 16:37:34 +0100</pubDate>
+      
+      <guid>http://abllr.github.io/posts/cryptography-primer-zero/</guid>
+      <description>ELI0 Cryptography : Digital Signatures A 300B$ industry In this series of post I will try to shed the light on a few cryptography concepts and algorithms , explaining the mathematics behind them and trying to explain intuitively how it all works . If you find any mistakes you&amp;rsquo;re welcome to mention it by email . We start with Digital Signatures the backbone of every crypto(currency) out there .</description>
+    </item>
+    
+    <item>
+      <title>You Cant Beat Visa</title>
+      <link>http://abllr.github.io/posts/you-cant-beat-visa/</link>
+      <pubDate>Tue, 10 Jul 2018 23:17:14 +0100</pubDate>
+      
+      <guid>http://abllr.github.io/posts/you-cant-beat-visa/</guid>
+      <description>In a white paper or a marketing brochure somewhere there&amp;rsquo;s a common sentence &amp;ldquo;Visa processes 7000 TPS&amp;rdquo; the actual number is more like 1600 TPS and Visa says they can handle more
+The sell pitch is usually scalable more transactions per seconds , this blog post is going to deconstruct this and convince you that , if you want decentralized you can&amp;rsquo;t do visa type of transactions .
+Basics First  Things your favorite developer don&amp;rsquo;t probably know :  In the land of distributed systems , a smart fellow devised 8 fallacies of distributed systems ref</description>
+    </item>
     
     <item>
       <title>Transactions as Puzzles : How to think about Bitcoin and Ethereum ledgers</title>

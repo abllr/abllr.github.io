@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.40.1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,800" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/custom.css">
+<title>Cryptography Primer Zero</title>
+</head>
+<body>
+
+<div class="container">
+  <header role="banner">
+  <h1 id="title">Cryptography Primer Zero</h1>
+  </header>
+
+  <main role="main">
+  <div>
+        <article id="content">
+           
+
+<h2 id="eli0-cryptography-digital-signatures-a-300b-industry">ELI0 Cryptography :  Digital Signatures A 300B$ industry</h2>
+
+<p>In this series of post I will try to shed the light on a few cryptography concepts and algorithms , explaining the mathematics behind
+them and trying to explain intuitively how it all works . If you find any mistakes you&rsquo;re welcome to mention it by email .
+We start with Digital Signatures the backbone of every crypto(currency) out there .</p>
+
+<p><strong>Note</strong> : In cryptography we deal with numbers usually bits so everything that is generated , verified , or signed is just a number the numbers can be big so we use letters to generalize,
+when you see <em>s</em> or <em>S</em> or <em>I</em> think a number 5,9348124,0 I wanted to write a math intro but there&rsquo;s already enough math out there .</p>
+
+<h2 id="signatures-digital-signatures">Signatures &amp; Digital Signatures</h2>
+
+<p>A Signature in the real world (physical) is an identification scheme , a check to be authenticated has to be signed by a signer , the same can
+be done on bits . By signing a series of bits you authenticate yourself as the producer of those bits , for example suppose you have create a new
+software <strong>MacroWord</strong> and would like to roll out updates , to avoid supply-chain attacks you can publish the update and a signature <em>sigma</em> such
+as anyone can verify that the update was delivered by you assuming you can be trusted .</p>
+
+<blockquote>
+<p>A Digital Signature authentifies a message as from the signer relying on a public signature <em>sigma</em> and a <em>public key</em></p>
+</blockquote>
+
+<p>A digital signature scheme is a triplet of algorithm (G,V,S) :</p>
+
+<ul>
+<li>G : <strong>probabilistic</strong> key generation algorithm, it generates a private key <em>sk</em> and a public key <em>pk</em></li>
+<li>V : is a <strong>deterministic</strong> verification algorithm,given a signature, message and public key it says whether the signature is valid or not .</li>
+
+<li><p>S : <strong>probabilistic</strong> signing algorithm, given a message and a secret key it outputs a signature <em>sigma</em></p></li>
+
+<li><p>Probabilistic : Probabilistic here means that the algorithm gives a different output at each run even if the same parameters are used</p></li>
+
+<li><p>Deterministic : The algorithm outputs the same result given the same parameters</p></li>
+</ul>
+
+<p><strong>In Bitcoin</strong> :</p>
+
+<p>Let&rsquo;s take the primitive P2PK (Pay To Public Key) transaction in <em>Bitcoin</em>, these are rarely used as efficient alternative exist (P2PKH,P2SH)</p>
+
+<p><a href="https://lopp.net/pdf/Bitcoin_Developer_Reference.pdf">ref:4.3.1</a></p>
+
+<p>Let&rsquo;s remember few things , A <a href="https://en.bitcoin.it/wiki/Transaction">Transaction</a> Output will usually refeer to a challenge script (<em>scriptPubKey</em>) under which that output is to be spent,A Transaction Input will refeer to a
+response script <em>scriptSig</em> and is used to prove that the referenced transaction output can be claimed .</p>
+
+<p>The P2PK Script will usually be something like this :</p>
+
+<ul>
+<li><strong>scriptPubKey</strong> : &lt; Alice PubKey &gt; OP_CHECKSIG</li>
+<li><strong>scriptSig</strong>    : &lt; Signature &gt;</li>
+</ul>
+
+<p>Here the sender Bob tells the system that only he who provides a valid signature can spend this input,this means that you need knowledge of the <em>secret key</em>
+to provide a valid <em>signature</em> that can be verified with OP_CHECKSIG</p>
+
+<p>Digital Signature are used to prove ownership of private keys in Bitcoin, and in that sense prove ownership of unspent coins .</p>
+
+<hr />
+
+<h2 id="that-schnorr-explanation-you-ve-been-waiting-for">That Schnorr Explanation You&rsquo;ve been waiting for</h2>
+
+<p>The reason I started with Schnorr is that it&rsquo;s easier to explain, but before we start by explainin schnorr signatures we need to go trough a couple things
+first <a href="https://en.wikipedia.org/wiki/Proof_of_knowledge"><em>identification schemes</em></a> and <a href="https://en.wikipedia.org/wiki/Fiat%E2%80%93Shamir_heuristic"><em>Fiat-Shamir Transform</em></a> .</p>
+
+<p>An identification scheme is literally an identification scheme, unlike <em>signature</em> that prove authenticity , <em>identifcation schemes</em> prove identity . Identification
+schemes are interactive protocols they require interaction between two sides the <em>Prover</em> and the <em>Verifier</em> . The prover seeks to prove his identity to the verifier ,
+here we discuss a public-key protocol (nothing <strong>secret</strong> is being shared in the channel) . A successful execution of an identification protocol helps prove to the verifier
+that it&rsquo;s talking to the actual holder of the <em>public key</em> not an imposter .</p>
+
+<p>An identification protocol is composed <em>generally</em> of three rounds , using three algorithms :</p>
+
+<ul>
+<li>P1 executed by the <em>prover</em> takes a secret key <em>sk</em> and outputs an initial message <em>I</em> and a state <em>S</em></li>
+<li>P2 executed by the <em>prover</em> takes a <em>sk</em> , <em>S</em> and <em>r</em> and outputs <em>s</em></li>
+
+<li><p>V executed by the <em>verifier</em> takes <em>s</em> and <em>pk</em> and <em>r</em> and verifies whether V(pk,s,r) == I</p></li>
+
+<li><p>Alice and Bob , Alice is the prover and Bob is the verifier:</p>
+
+<ul>
+<li>Round 1 : Alice runs P1(sk) and retrieves <em>I</em> and <em>S</em> , and sends <em>I</em> to Bob</li>
+<li>Round 2 : Bob now has <em>I</em> , he generates a random number <em>r</em> and sends it back to Alice</li>
+<li>Round 3 : Alice generates <em>s</em> := P2(sk,S,r) and sends <em>s</em> to Bob , Bob verifies <em>s</em> == <em>I</em></li>
+</ul></li>
+</ul>
+
+<p>The problem with such scheme is it requires interaction (Alice and Bob need to be both online and chatting for the protocol to succeed if Alice is actually Alice)</p>
+
+<p>The Fiat-Shamir Transform is a heuristic to turn this into a non-interactive protocol , one where Alice can simply send the proof to Bob by a <em>Pigeon</em> and Bob can verify it .</p>
+
+<p>Instead of Bob sending <em>r</em> to Alice, Alice does Round 2 by herself, computes r:= H(I,m) and sends Bob <em>r</em> &amp; <em>s</em> , Bob then computes I := V(pk,r,s) and verifies whether H(I,m) == r .</p>
+
+<p><strong>Schnorr</strong> turned an <a href="https://www.researchgate.net/profile/Claus_Schnorr/publication/227088517_Efficient_signature_generation_by_smart_cards/links/0046353849579ce09c000000.pdf">identification scheme</a>
+by using the <em>Fiat-Shamir Transform</em> to a signature scheme .</p>
+
+<p>I will not discuss the identification scheme as you can read the paper but we will look at the signature scheme and implement it using Golang in the next post.</p>
+
+        </article>
+  </div>
+<aside id="meta">
+    <div>
+    <section>
+      <span class="entry-meta"><time itemprop="datePublished" datetime="2018-07-12">July 12, 2018 | 919 Words</time></span>
+    </section>
+    
+    
+    </div>
+    <div>
+        
+          <a class="previous" href="http://abllr.github.io/posts/you-cant-beat-visa/"> You Cant Beat Visa</a> |
+        
+        
+    </div>
+
+</aside>
+</main>
+
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			<a href="/">Home</a> / <a href="mailto:test@test.com" target="_blank">Email</a> / <a href="https://salcangeloso.com">Site</a>
+		</div>
+		<div class="copyright">Copyright &copy; 2018</div>
+	</footer>
+
+  </div>
+
+</body>
+</html>
